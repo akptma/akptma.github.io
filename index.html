@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.8/typed.min.js "></script>
+</head>
+<style>
+    html,body{height:100%}
+.bg_heart{position:relative;top:0;left:0;width:100%;height:100%;overflow:hidden}
+
+.heart{position:absolute;top:-50%;-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-m-transform:rotate(-45deg);transform:rotate(-45deg)}
+.heart:before{position:absolute;top:-50%;left:0;display:block;content:"";width:100%;height:100%;background:inherit;border-radius:100%;}
+.heart:after{position:absolute;top:0;right:-50%;display:block;content:"";width:100%;height:100%;background:inherit;border-radius:100%;}
+
+@-webkit-keyframes love {
+  0%{top:110%}
+}
+@-moz-keyframes love {
+  0%{top:110%}
+}
+@-ms-keyframes love {
+  0%{top:110%}
+}
+@keyframes love {
+  0%{top:110%}
+}
+
+@font-face {
+        font-family: dina;
+        src: url(font.ttf);
+
+}
+ 
+h1{
+	font-family: 'dina';
+	font-size: 70pt;
+	/* font-variant: inherit; */
+}
+span{
+	font-size: 12pt;
+	/* font-variant: inherit; */
+}
+.love {
+    margin-top: 50%;
+}
+</style>
+
+<body style="background-color: #f8f8f8;">
+    <div class="bg_heart">
+        <div class="box">
+            <div class="row love">
+                <div class="col-md-3"></div>
+                <div class="col-md-8">
+                    <h1>Dika <img src="https://pngimg.com/uploads/love/love_PNG64.png" width="200px"> Dainna</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <center>
+
+                        <p><span id="typed"></span></p>
+                    </center>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+<audio id="player" autoplay controls loop><source src="we.mp3" type="audio/mp3"></audio>
+<script>
+    var typed = new Typed("#typed", {
+        strings: ["Assalamualaikum", "Dina Maafin Dika Ya kalau Selama Ini Dika Gak Pernah Peka :')", "Boleh Nggak Sih Dika Bilang Dika Cinta Dina hari ini ?", "Kalau Besok Gimana ?" ,"Besok Lusa ?" ,"Besoknya Besok Lusa ?" ,"Gimana Kalau Selamanya ?", "DINA AKU MENCITAIMU"],
+        typeSpeed:70,
+        startDelay:90,
+        loop:true
+    })
+    var love = setInterval(function(){
+  var r_num = Math.floor(Math.random() * 40) + 1;
+	var r_size = Math.floor(Math.random() * 65) + 10;
+	var r_left = Math.floor(Math.random() * 100) + 1;
+	var r_bg = Math.floor(Math.random() * 25) + 100;
+  var r_time = Math.floor(Math.random() * 5) + 5;
+  
+  $('.bg_heart').append("<div class='heart' style='width:"+r_size+"px;height:"+r_size+"px;left:"+r_left+"%;background:rgba(255,"+(r_bg-25)+","+r_bg+",1);-webkit-animation:love "+r_time+"s ease;-moz-animation:love "+r_time+"s ease;-ms-animation:love "+r_time+"s ease;animation:love "+r_time+"s ease'></div>");
+  
+  $('.bg_heart').append("<div class='heart' style='width:"+(r_size-10)+"px;height:"+(r_size-10)+"px;left:"+(r_left+r_num)+"%;background:rgba(255,"+(r_bg-25)+","+(r_bg+25)+",1);-webkit-animation:love "+(r_time+5)+"s ease;-moz-animation:love "+(r_time+5)+"s ease;-ms-animation:love "+(r_time+5)+"s ease;animation:love "+(r_time+5)+"s ease'></div>");
+  
+  $('.heart').each(function(){
+    var top = $(this).css("top").replace(/[^-\d\.]/g, '');
+    var width = $(this).css("width").replace(/[^-\d\.]/g, '');
+    if(top <= -100 || width >= 150){
+      $(this).detach();
+    }
+  });
+},500);
+</script>
+</html>
